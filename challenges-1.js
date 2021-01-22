@@ -34,13 +34,10 @@ console.log(getTotalPassengers(data))
 // Return a number.
 
 function getSurvivorCount(data) {
-	let num = 0
-	const survivedPassengers = data.filter((passenger) => {
-		if (passenger.fields.survived === 'Yes') {
-			num += 1
-		}
-	})
-	return "Number of passengers that survived: " + num
+	const survivedPassengers = data.filter((passenger) => 
+		passenger.fields.survived === 'Yes'
+	)
+	return "Number of passengers that survived: " + survivedPassengers.length
 }
 console.log(getSurvivorCount(data))
 
@@ -49,13 +46,10 @@ console.log(getSurvivorCount(data))
 // Return a number.
 
 function getCasualityCount(data) {
-	let num = 0
-	const deadPassengers = data.filter((passenger) => {
-		if (passenger.fields.survived === 'No') {
-			num += 1
-		}
-	})
-	return "Number of passengers that died: " + num
+	const deadPassengers = data.filter((passenger) => 
+		passenger.fields.survived === 'No'
+	)
+	return "Number of passengers that died: " + deadPassengers.length
 }
 console.log(getCasualityCount(data))
 
@@ -66,16 +60,26 @@ console.log(getCasualityCount(data))
 // Return a number
 
 function countPassengersInClass(data, pclass) {
-	return 0
+	const classPassengers = data.filter((passenger) => 
+		passenger.fields.pclass == (pclass)
+	)
+	return `Number of passengers in class ${pclass}: ${classPassengers.length}`
 }
+console.log(countPassengersInClass(data, "3"))
 
 // 5 ---------------------------------------------------------------
 // Return the number of survivors in a class. This function takes 
 // the data and passenger class. Return only passengers  
 
 function getSurvivorCountForClass(data, pclass) {
-	return 0
+	const survivedPassengersClass = data.filter((passenger) => 
+		passenger.fields.pclass == (pclass)
+	).filter((passenger) => 
+	passenger.fields.survived === 'Yes'
+	)
+	return `Number of passengers in class ${pclass} that survived: ${survivedPassengersClass.length}`
 }
+console.log(getSurvivorCountForClass(data, "3"))
 
 // 6 ---------------------------------------------------------------
 // Return the number of passengers who did not survive in a class.
@@ -83,23 +87,37 @@ function getSurvivorCountForClass(data, pclass) {
 // the number of passengers who did not survive for that class. 
 
 function getCasualityCountForClass(data, pclass) {
-	return 0
+	const deadPassengersClass = data.filter((passenger) => 
+		passenger.fields.pclass == (pclass)
+	).filter((passenger) => 
+	passenger.fields.survived === 'No'
+	)
+	return `Number of passengers in class ${pclass} that died: ${deadPassengersClass.length}`
 }
+console.log(getCasualityCountForClass(data, "3"))
 
 // 7 ---------------------------------------------------------------
 // Return the age of the youngest passenger. You'll need to filter
 // passenger data where the age is missing. 
 
 function getMinAge(data) {
-	return 0
+	const agePassengers = data.filter((passenger) => 
+	passenger.fields.age != null).map(passenger => passenger.fields.age)
+	const ageMin = Math.min(...agePassengers)
+	return `Age of the youngest passenger: ${ageMin}`
 }
+console.log(getMinAge(data))
 
 // 8 ---------------------------------------------------------------
 // Return the age of the oldest passenger. 
 
 function getMaxAge(data) {
-	return 0
+	const agePassengers = data.filter((passenger) => 
+	passenger.fields.age != null).map(passenger => passenger.fields.age)
+	const ageMax = Math.max(...agePassengers)
+	return `Age of the oldest passenger: ${ageMax}`
 }
+console.log(getMaxAge(data))
 
 // 9 ---------------------------------------------------------------
 // Return the number of passengers that embarked at a given stop. 
@@ -107,16 +125,24 @@ function getMaxAge(data) {
 // or Q. 
 
 function getEmbarkedCount(data, embarked) {
-	return 0
+	const embarkPassengers = data.filter((passenger) => 
+		passenger.fields.embarked == (embarked)
+	)
+	return `Number of passengers that embarked at ${embarked}: ${embarkPassengers.length}`
 }
+console.log(getEmbarkedCount(data, "Q"))
 
 // 10 ---------------------------------------------------------------
 // Return the lowest fair paid by any passenger. The fare is missing 
 // for some passengers you'll need to filter this out! 
 
 function getMinFare(data) {
-	return 0
+	const farePassengers = data.filter((passenger) => 
+	passenger.fields.fare != null).map(passenger => passenger.fields.fare)
+	const fareMin = Math.min(...farePassengers)
+	return `Minimum fare paid by a passenger: ${fareMin}`
 }
+console.log(getMinFare(data))
 
 // 11 ---------------------------------------------------------------
 // Return the highest fare paid by any passenger. Some of the 
