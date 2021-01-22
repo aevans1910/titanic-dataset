@@ -149,58 +149,78 @@ console.log(getMinFare(data))
 // passengers are missing data for fare.
 
 function getMaxFare(data) {
-	return 0
+	const farePassengers = data.filter((passenger) => 
+	passenger.fields.fare != null).map(passenger => passenger.fields.fare)
+	const fareMax = Math.max(...farePassengers).toFixed(2)
+	return `Maximum fare paid by a passenger: ${fareMax}`
 }
+console.log(getMaxFare(data))
 
 // 12 ---------------------------------------------------------------
 // Return the count of passengers by gender. 
 
 function getPassengersByGender(data, gender) {
-	return 0
+	const sexPassenger = data.filter((passenger) => 
+		passenger.fields.sex == (gender)
+	)
+	return `Number of ${gender} passengers: ${sexPassenger.length}`
 }
+console.log(getPassengersByGender(data, "female"))
 
 // 13 ---------------------------------------------------------------
 // Return the number of passengers who survived by gender. 
 
 function getSurvivorsByGender(data, gender) {
-	return 0
+	const survivedPassengersSex = data.filter((passenger) => 
+		passenger.fields.sex == (gender)
+	).filter((passenger) => 
+	passenger.fields.survived === 'Yes'
+	)
+	return `Number of ${gender} passengers that survived: ${survivedPassengersSex.length}`
 }
+console.log(getSurvivorsByGender(data, "female"))
 
 // 14 ---------------------------------------------------------------
 // Return the number of passengers who did not survived by gender. 
 
 function getCasualitiesByGender(data, gender) {
+	const deadPassengersSex = data.filter((passenger) => 
+		passenger.fields.sex == (gender)
+	).filter((passenger) => 
+	passenger.fields.survived === 'No'
+	)
+	return `Number of ${gender} passengers that died: ${deadPassengersSex.length}`
+}
+console.log(getCasualitiesByGender(data, "male"))
+
+// 15 --------------------------------------------------------------
+// Return the total of all fares paid. 
+
+function getTotalFare(data) {
 	return 0
 }
 
-// // 15 --------------------------------------------------------------
-// // Return the total of all fares paid. 
+// 16 --------------------------------------------------------------
+// Return the average fare paid.
 
-// function getTotalFare(data) {
-// 	return 0
-// }
+function getAverageFare(data) {
+	return 0
+}
 
-// // 16 --------------------------------------------------------------
-// // Return the average fare paid.
+// 17 --------------------------------------------------------------
+// Return the median fare. The median is the value equal distance
+// from the minimum and maximum values. 
 
-// function getAverageFare(data) {
-// 	return 0
-// }
+function getMedianFare(data) {
+	return 0
+}
 
-// // 17 --------------------------------------------------------------
-// // Return the median fare. The median is the value equal distance
-// // from the minimum and maximum values. 
+// 18 --------------------------------------------------------------
+// Return the average age of all passengers. 
 
-// function getMedianFare(data) {
-// 	return 0
-// }
-
-// // 18 --------------------------------------------------------------
-// // Return the average age of all passengers. 
-
-// function getAverageAge(data) {
-// 	return 0
-// }
+function getAverageAge(data) {
+	return 0
+}
 
 // 19 --------------------------------------------------------------
 // Return the median age from passengers. 
