@@ -1,3 +1,4 @@
+let data = require('./titanic-passengers.json');
 // ================================================================
 
 // Titanic Dataset challenges! 
@@ -22,8 +23,10 @@
 // Return a number.
 
 function getTotalPassengers(data) {
-	return 0
+	const numPassengers = data.length
+	return "Number of passengers: " + numPassengers
 }
+console.log(getTotalPassengers(data))
 
 // 2 ---------------------------------------------------------------
 // Return the number of surviving passengers. A passenger survived 
@@ -31,16 +34,30 @@ function getTotalPassengers(data) {
 // Return a number.
 
 function getSurvivorCount(data) {
-	return 0
+	let num = 0
+	const survivedPassengers = data.filter((passenger) => {
+		if (passenger.fields.survived === 'Yes') {
+			num += 1
+		}
+	})
+	return "Number of passengers that survived: " + num
 }
+console.log(getSurvivorCount(data))
 
 // 3 ---------------------------------------------------------------
 // Return the number of passengers who did not survive. A passenger
 // Return a number.
 
 function getCasualityCount(data) {
-	return 0
+	let num = 0
+	const deadPassengers = data.filter((passenger) => {
+		if (passenger.fields.survived === 'No') {
+			num += 1
+		}
+	})
+	return "Number of passengers that died: " + num
 }
+console.log(getCasualityCount(data))
 
 // 4 ---------------------------------------------------------------
 // Return the number of passengers in any class. This function 
@@ -130,34 +147,34 @@ function getCasualitiesByGender(data, gender) {
 	return 0
 }
 
-// 15 --------------------------------------------------------------
-// Return the total of all fares paid. 
+// // 15 --------------------------------------------------------------
+// // Return the total of all fares paid. 
 
-function getTotalFare(data) {
-	return 0
-}
+// function getTotalFare(data) {
+// 	return 0
+// }
 
-// 16 --------------------------------------------------------------
-// Return the average fare paid.
+// // 16 --------------------------------------------------------------
+// // Return the average fare paid.
 
-function getAverageFare(data) {
-	return 0
-}
+// function getAverageFare(data) {
+// 	return 0
+// }
 
-// 17 --------------------------------------------------------------
-// Return the median fare. The median is the value equal distance
-// from the minimum and maximum values. 
+// // 17 --------------------------------------------------------------
+// // Return the median fare. The median is the value equal distance
+// // from the minimum and maximum values. 
 
-function getMedianFare(data) {
-	return 0
-}
+// function getMedianFare(data) {
+// 	return 0
+// }
 
-// 18 --------------------------------------------------------------
-// Return the average age of all passengers. 
+// // 18 --------------------------------------------------------------
+// // Return the average age of all passengers. 
 
-function getAverageAge(data) {
-	return 0
-}
+// function getAverageAge(data) {
+// 	return 0
+// }
 
 // 19 --------------------------------------------------------------
 // Return the median age from passengers. 
@@ -178,7 +195,7 @@ function getAverageAgeByGender(data, gender) {
 module.exports.getTotalPassengers = getTotalPassengers
 module.exports.getSurvivorCount = getSurvivorCount
 module.exports.getCasualityCount = getCasualityCount
-module.exports.getUniqueValues = getUniqueValues
+// module.exports.getUniqueValues = getUniqueValues
 module.exports.countPassengersInClass = countPassengersInClass
 module.exports.getSurvivorCountForClass = getSurvivorCountForClass
 module.exports.getCasualityCountForClass = getCasualityCountForClass
@@ -190,11 +207,11 @@ module.exports.getMinFare = getMinFare
 module.exports.getPassengersByGender = getPassengersByGender
 module.exports.getSurvivorsByGender = getSurvivorsByGender
 module.exports.getCasualitiesByGender = getCasualitiesByGender
-module.exports.getSurvivorsByPClass = getSurvivorsByPClass
-module.exports.getCasualitiesByPClass = getCasualitiesByPClass
-module.exports.getTotalFare = getTotalFare
-module.exports.getAverageFare = getAverageFare
-module.exports.getMedianFare = getMedianFare
-module.exports.getAverageAge = getAverageAge
+// module.exports.getSurvivorsByPClass = getSurvivorsByPClass
+// module.exports.getCasualitiesByPClass = getCasualitiesByPClass
+// module.exports.getTotalFare = getTotalFare
+// module.exports.getAverageFare = getAverageFare
+// module.exports.getMedianFare = getMedianFare
+// module.exports.getAverageAge = getAverageAge
 module.exports.getMedianAge = getMedianAge
 module.exports.getAverageAgeByGender = getAverageAgeByGender
